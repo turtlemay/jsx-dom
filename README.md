@@ -1,6 +1,11 @@
+## @turtlemay/jsx-dom
+
 This JSX factory allows you to use React-like design patterns with web components and other native DOM elements.
 
-Example using a web component:
+[![npm (scoped)](https://img.shields.io/npm/v/@turtlemay/jsx-dom.svg)]()
+[![David](https://img.shields.io/david/dev/turtlemay/jsx-dom.svg)]()
+
+## Example
 
 ```javascript
 import * as React from '@turtlemay/jsx-dom';
