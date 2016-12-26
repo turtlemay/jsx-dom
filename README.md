@@ -65,6 +65,8 @@ JSX elements become native DOM elements:
 console.assert(<div /> instanceof HTMLDivElement);
 ```
 
+## Optional Configuration
+
 With TypeScript you can use a namespace other than `React` by setting your `tsconfig.json`:
 
 ```json
