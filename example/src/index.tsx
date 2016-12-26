@@ -21,6 +21,10 @@ const testAttribs = {
     display: "block",
   },
 
+  onClick: e => {
+    console.log("onClick", e.target);
+  },
+
   "test-string": "foo",
   "test-boolean": false,
   "test-number": 0,

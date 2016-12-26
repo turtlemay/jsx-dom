@@ -28,6 +28,10 @@ export function createElement(
     else if (k === "style" && typeof v === "object") {
       Object.assign(elem.style, v);
     }
+    else if (k.startsWith("on") && typeof v === "function") {
+      const eventType = k.substr(2, k.length).toLowerCase();
+      elem.addEventListener(eventType, v);
+    }
     else if (typeof v === "string") {
       if (k === "className") k = "class";
       if (k === "htmlFor") k = "for";
