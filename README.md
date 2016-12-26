@@ -27,9 +27,12 @@ class MyCustomElement extends HTMLElement {
 customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement);
 
 // Use the custom element type like a React component.
-// Props become native attributes.
 document.body.appendChild(
   <MyCustomElement
+    // Event functions become native event listeners.
+    onClick={e => {}}
+
+    // Other props become native attributes.
     my-string-attrib="foo"
     my-number-attrib={0}
     my-boolean-attrib={true} />
