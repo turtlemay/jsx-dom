@@ -27,6 +27,7 @@ export function createElement(
     }
     else if (typeof v === "string") {
       if (k === "className") k = "class";
+      if (k === "htmlFor") k = "for";
       elem.setAttribute(k, v);
     }
     else if (typeof v === "number") {
