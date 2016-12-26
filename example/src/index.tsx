@@ -15,6 +15,12 @@ class MyCustomElement extends HTMLElement {
 customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement);
 
 const testAttribs = {
+  className: "test",
+
+  style: {
+    display: "block",
+  },
+
   "test-string": "foo",
   "test-boolean": false,
   "test-number": 0,
