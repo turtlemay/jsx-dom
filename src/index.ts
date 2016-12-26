@@ -25,6 +25,9 @@ export function createElement(
     if (v === undefined || v === null) {
       continue;
     }
+    else if (k === "style" && typeof v === "object") {
+      Object.assign(elem.style, v);
+    }
     else if (typeof v === "string") {
       if (k === "className") k = "class";
       if (k === "htmlFor") k = "for";
