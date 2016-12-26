@@ -7,7 +7,7 @@ declare global {
 
 export function createElement(
   type: (new () => HTMLElement) | string,
-  props: { [name: string]: string | number | boolean },
+  props: { [name: string]: string | number | boolean | Object | EventListener },
   ...children: (HTMLElement | string)[], ): HTMLElement {
 
   let elem: HTMLElement;
