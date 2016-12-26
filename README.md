@@ -1,23 +1,34 @@
-This JSX factory allows you to use React-like design patterns in a non-React environment.
+This JSX factory allows you to use React-like design patterns with web components and other native DOM elements.
 
 Example using a web component:
 
 ```javascript
 import * as React from '@turtlemay/jsx-dom';
 
-export default class MyComponent extends HTMLElement {
-  createdCallback() {
-    this.appendChild(MyComponent._render());
-  }
+// Define a custom element type.
+class MyCustomElement extends HTMLElement {
+  private static _template = (
+    <template>
+      <p>hello {MyCustomElement.name}</p>
+    </template>
+  ) as HTMLTemplateElement;
 
-  static _render() {
-    return (
-      <div class="my-component-child">
-        <p>foo</p>
-      </div>
-    );
+  public connectedCallback() {
+    this.appendChild(document.importNode(MyCustomElement._template.content, true));
   }
 }
+
+// Register our custom element.
+customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement);
+
+// Use the custom element type like a React component.
+// Props become native attributes.
+document.body.appendChild(
+  <MyCustomElement
+    my-string-attrib="foo"
+    my-number-attrib={0}
+    my-boolean-attrib={true} />
+);
 ```
 
 ## Installation
