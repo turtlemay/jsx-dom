@@ -1,14 +1,19 @@
 import * as React from "../..";
 
 class MyCustomElement extends HTMLElement {
-  private static _template = (
-    <template>
-      <p>hello {MyCustomElement.name}</p>
-    </template>
-  ) as HTMLTemplateElement;
-
   public connectedCallback() {
-    this.appendChild(document.importNode(MyCustomElement._template.content, true));
+    this._render();
+  }
+
+  private _render() {
+    const template = (
+      <template>
+        <p>hello {MyCustomElement.name}</p>
+      </template>
+    ) as HTMLTemplateElement;
+
+    this.innerHTML = "";
+    this.appendChild(document.importNode(template.content, true));
   }
 }
 

@@ -12,14 +12,9 @@ import * as React from '@turtlemay/jsx-dom';
 
 // Define a custom element type.
 class MyCustomElement extends HTMLElement {
-  private static _template = (
-    <template>
-      <p>hello {MyCustomElement.name}</p>
-    </template>
-  ) as HTMLTemplateElement;
-
-  public connectedCallback() {
-    this.appendChild(document.importNode(MyCustomElement._template.content, true));
+  constructor() {
+    super();
+    this.appendChild(<p>hello {MyCustomElement.name}</p>);
   }
 }
 
