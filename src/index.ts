@@ -18,6 +18,9 @@ export function createElement(
   else if (typeof type === "function") {
     elem = new type();
   }
+  else {
+    throw new TypeError();
+  }
 
   for (let k in props) {
     let v = props[k];

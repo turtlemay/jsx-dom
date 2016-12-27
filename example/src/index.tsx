@@ -21,7 +21,7 @@ const testAttribs = {
     display: "block",
   },
 
-  onClick: e => {
+  onClick: (e: MouseEvent) => {
     console.log("onClick", e.target);
   },
 
