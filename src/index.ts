@@ -5,9 +5,11 @@ declare global {
   }
 }
 
+export type Setter = (v: HTMLElement) => void;
+
 export function createElement(
   type: (new () => HTMLElement) | string,
-  props: { [name: string]: string | number | boolean | Object | EventListener },
+  props: { [name: string]: string | number | boolean | Object | EventListener | Setter },
   ...children: (HTMLElement | string)[], ): HTMLElement {
 
   let elem: HTMLElement;
@@ -28,12 +30,15 @@ export function createElement(
     if (v === undefined || v === null) {
       continue;
     }
+    else if (k === "ref" && typeof v === "function") {
+      (v as Setter)(elem);
+    }
     else if (k === "style" && typeof v === "object") {
       Object.assign(elem.style, v);
     }
     else if (k.startsWith("on") && typeof v === "function") {
       const eventType = k.substr(2, k.length).toLowerCase();
-      elem.addEventListener(eventType, v);
+      elem.addEventListener(eventType, v as EventListener);
     }
     else if (typeof v === "string") {
       if (k === "className") k = "class";
