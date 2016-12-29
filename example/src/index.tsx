@@ -1,13 +1,19 @@
 import * as React from "../..";
 
 class MyCustomElement extends HTMLElement {
+  private _paragraphElem: HTMLParagraphElement;
+
   public connectedCallback() {
     this._render();
   }
 
   private _render() {
     this.innerHTML = "";
-    this.appendChild(<p>hello {MyCustomElement.name}</p>);
+    this.appendChild(
+      <p ref={(v: HTMLParagraphElement) => this._paragraphElem = v}>
+        hello {MyCustomElement.name}
+      </p>
+    );
   }
 }
 
