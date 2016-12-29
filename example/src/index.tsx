@@ -26,8 +26,8 @@ const testAttribs = {
     display: "block",
   },
 
-  onClick: (e: MouseEvent) => {
-    console.log("onClick", e.target);
+  onClick: (e: Event) => {
+    console.log(e.type, e.target);
   },
 
   "test-string": "foo",
