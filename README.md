@@ -89,6 +89,7 @@ const div = <div />;
 Use a decorator for easy component registration:
 
 ```javascript
+// Decorator with optional tag name to define custom elements.
 function registerComponent(tagName) {
   return type => {
     if (!tagName) tagName = `x-${type.name.toLowerCase()}`;
@@ -97,6 +98,7 @@ function registerComponent(tagName) {
   };
 }
 
+// Decorate your components.
 @registerComponent()
 class MyComponent extends HTMLElement {}
 ```
