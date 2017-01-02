@@ -91,7 +91,7 @@ Use a decorator for easy component registration:
 ```javascript
 function registerComponent(tagName) {
   return type => {
-    if (!tagName) tagName = `x-${type.name}`;
+    if (!tagName) tagName = `x-${type.name.toLowerCase()}`;
     if (customElements.get(tagName)) return;
     customElements.define(tagName, type);
   };
