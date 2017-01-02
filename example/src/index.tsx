@@ -6,6 +6,11 @@ class MyCustomElement extends HTMLElement {
 
   public connectedCallback() {
     this._render();
+    console.assert(this.className === "test");
+    console.assert(this.style.display === "block");
+    console.assert(this.getAttribute("test-string") === "foo");
+    console.assert(this.getAttribute("test-boolean") === null);
+    console.assert(this.getAttribute("test-number") === "0");
   }
 
   private _render() {
