@@ -1,5 +1,6 @@
 import * as React from "../..";
 
+@registerComponent()
 class MyCustomElement extends HTMLElement {
   private _paragraphElem: HTMLParagraphElement;
 
@@ -16,8 +17,6 @@ class MyCustomElement extends HTMLElement {
     );
   }
 }
-
-customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement);
 
 const testAttribs = {
   className: "test",
@@ -44,3 +43,11 @@ document.body.appendChild(
 document.body.appendChild(
   <MyCustomElement {...testAttribs} />
 );
+
+export function registerComponent(tagName?: string) {
+  return <T extends HTMLElement>(type: new () => T) => {
+    if (!tagName) tagName = `x-${type.name.toLowerCase()}`;
+    if (customElements.get(tagName)) return;
+    customElements.define(tagName, type);
+  };
+}
