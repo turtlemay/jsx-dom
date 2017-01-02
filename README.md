@@ -76,3 +76,20 @@ import * as JSXFactory from '@turtlemay/jsx-dom';
 
 const div = <div />;
 ```
+
+## Tips
+
+Use a decorator for easy component registration:
+
+```javascript
+function registerComponent(tagName) {
+  return type => {
+    if (!tagName) tagName = `x-${type.name}`;
+    if (customElements.get(tagName)) return;
+    customElements.define(tagName, type);
+  };
+}
+
+@registerComponent()
+class MyComponent extends HTMLElement {}
+```
