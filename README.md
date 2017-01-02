@@ -41,6 +41,7 @@ document.body.appendChild(
 ```
 
 ## Installation
+
 ```
 npm install @turtlemay/jsx-dom
 ```
