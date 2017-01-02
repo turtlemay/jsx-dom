@@ -24,16 +24,16 @@ customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement
 // Use the custom element type like a React component.
 document.body.appendChild(
   <MyCustomElement
-    // Use ref attribute to save your element reference.
+    // Use the ref callback to save your element reference.
     ref={v => this._myElemRef = v}
 
-    // Event functions become native event listeners.
+    // Event callbacks become native event listeners.
     onClick={e => {}}
 
     // Style objects are also supported.
     style={{ border: "1px solid red" }}
 
-    // Other props become native attributes.
+    // Anything else becomes a native attribute.
     my-string-attrib="foo"
     my-number-attrib={0}
     my-boolean-attrib={true} />
