@@ -3,7 +3,6 @@
 This JSX factory allows you to use React-like design patterns with web components and other native DOM elements.
 
 [![npm (scoped)](https://img.shields.io/npm/v/@turtlemay/jsx-dom.svg)]()
-[![David](https://img.shields.io/david/dev/turtlemay/jsx-dom.svg)]()
 
 ## Example
 
