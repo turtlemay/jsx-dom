@@ -102,3 +102,22 @@ function registerComponent(tagName) {
 @registerComponent()
 class MyComponent extends HTMLElement {}
 ```
+
+For passing non-serializable props, use an initializer:
+
+```javascript
+@registerComponent()
+class MyComponent extends HTMLElement {
+  init(myArg) {
+    // Use your arguments to perform initialization.
+    return this;
+  }
+}
+
+document.body.appendChild(
+  MyComponent.prototype.init.call(
+    <MyComponent my-serializable-prop="" />,
+    { myNonSerializableProp: Symbol() }
+  )
+);
+```
