@@ -41,7 +41,7 @@ const testAttribs = {
 
 document.body.appendChild(
   <div {...testAttribs}>
-    <p>hello div</p>
+    <p children="hello div" />
   </div>
 );
 
