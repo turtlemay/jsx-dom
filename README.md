@@ -35,7 +35,9 @@ document.body.appendChild(
     // Anything else becomes a native attribute.
     my-string-attrib="foo"
     my-number-attrib={0}
-    my-boolean-attrib={true} />
+    my-boolean-attrib={true}
+    // Objects become json-stringified.
+    my-object-attrib={{ foo: "bar" }} />
 );
 ```
 
