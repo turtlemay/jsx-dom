@@ -1,6 +1,6 @@
 ## @turtlemay/jsx-dom
 
-This JSX factory allows you to use React-like design patterns with web components and other native DOM elements.
+This minimal, zero-dependency JSX factory allows you to use React-like design patterns with web components and other native DOM elements. Most JSX patterns and special attributes are supported.
 
 [![npm (scoped)](https://img.shields.io/npm/v/@turtlemay/jsx-dom.svg)](https://www.npmjs.com/package/@turtlemay/jsx-dom)
 
