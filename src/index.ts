@@ -9,9 +9,11 @@ export type Setter = (v: HTMLElement) => void;
 
 export type Child = HTMLElement | string | number | any[];
 
+export type Prop = string | number | boolean | Object | EventListener | Setter;
+
 export function createElement(
   type: (new () => HTMLElement) | string,
-  props: { [name: string]: string | number | boolean | Object | EventListener | Setter },
+  props: { [name: string]: Prop },
   ...children: Child[], ): HTMLElement {
 
   let elem: HTMLElement;
