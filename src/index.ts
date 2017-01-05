@@ -59,6 +59,9 @@ export function createElement(
       if (v) elem.setAttribute(k, k);
       else elem.removeAttribute(k);
     }
+    else if (typeof v === "object") {
+      elem.setAttribute(k, JSON.stringify(v));
+    }
     else {
       throw new TypeError(`Attribute type "${typeof v}" not supported.`);
     }
