@@ -61,38 +61,26 @@ export function createElement(
     }
   }
 
-  if (elem instanceof HTMLTemplateElement) {
-    const {content} = elem;
-    children.forEach(function handleChild(v: Child) {
-      if (typeof v === "string") {
-        content.appendChild(document.createTextNode(v));
-      }
-      else if (typeof v === "number") {
-        content.appendChild(document.createTextNode(v.toString()));
-      }
-      else if (v instanceof HTMLElement) {
-        content.appendChild(v);
-      }
-      else if (v instanceof Array) {
-        v.forEach(handleChild);
-      }
-    });
-  } else {
-    children.forEach(function handleChild(v: Child) {
-      if (typeof v === "string") {
-        elem.appendChild(document.createTextNode(v));
-      }
-      else if (typeof v === "number") {
-        elem.appendChild(document.createTextNode(v.toString()));
-      }
-      else if (v instanceof HTMLElement) {
-        elem.appendChild(v);
-      }
-      else if (v instanceof Array) {
-        v.forEach(handleChild);
-      }
-    });
-  }
+  const parent = elem instanceof HTMLTemplateElement ? elem.content : elem;
+  children.forEach(child => handleChild(parent, child));
 
   return elem;
+}
+
+function handleChild(
+  parent: HTMLElement | DocumentFragment,
+  child: Child, ): void {
+
+  if (typeof child === "string") {
+    parent.appendChild(document.createTextNode(child));
+  }
+  else if (typeof child === "number") {
+    parent.appendChild(document.createTextNode(child.toString()));
+  }
+  else if (child instanceof HTMLElement) {
+    parent.appendChild(child);
+  }
+  else if (child instanceof Array) {
+    child.forEach(c => handleChild(parent, c));
+  }
 }
