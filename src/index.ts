@@ -60,7 +60,7 @@ export function createElement(
       else elem.removeAttribute(k);
     }
     else {
-      throw new TypeError(`Attribute type "${typeof v}" not supported. Must provide a string, number, or boolean.`);
+      throw new TypeError(`Attribute type "${typeof v}" not supported.`);
     }
   }
 
