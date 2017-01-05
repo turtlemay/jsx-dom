@@ -37,6 +37,7 @@ const testAttribs = {
   "test-string": "foo",
   "test-boolean": false,
   "test-number": 0,
+  "test-object": { foo: "foo", },
 };
 
 document.body.appendChild(
