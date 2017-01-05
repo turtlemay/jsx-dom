@@ -7,10 +7,12 @@ declare global {
 
 export type Setter = (v: HTMLElement) => void;
 
+export type Child = HTMLElement | string | number | any[];
+
 export function createElement(
   type: (new () => HTMLElement) | string,
   props: { [name: string]: string | number | boolean | Object | EventListener | Setter },
-  ...children: (HTMLElement | string)[], ): HTMLElement {
+  ...children: Child[], ): HTMLElement {
 
   let elem: HTMLElement;
 
@@ -58,21 +60,36 @@ export function createElement(
   }
 
   if (elem instanceof HTMLTemplateElement) {
-    for (const v of children) {
+    const {content} = elem;
+    children.forEach(function handleChild(v: Child) {
       if (typeof v === "string") {
-        elem.content.appendChild(document.createTextNode(v));
-      } else if (v instanceof HTMLElement) {
-        elem.content.appendChild(v);
+        content.appendChild(document.createTextNode(v));
       }
-    }
+      else if (typeof v === "number") {
+        content.appendChild(document.createTextNode(v.toString()));
+      }
+      else if (v instanceof HTMLElement) {
+        content.appendChild(v);
+      }
+      else if (v instanceof Array) {
+        v.forEach(handleChild);
+      }
+    });
   } else {
-    for (const v of children) {
+    children.forEach(function handleChild(v: Child) {
       if (typeof v === "string") {
         elem.appendChild(document.createTextNode(v));
-      } else if (v instanceof HTMLElement) {
+      }
+      else if (typeof v === "number") {
+        elem.appendChild(document.createTextNode(v.toString()));
+      }
+      else if (v instanceof HTMLElement) {
         elem.appendChild(v);
       }
-    }
+      else if (v instanceof Array) {
+        v.forEach(handleChild);
+      }
+    });
   }
 
   return elem;
