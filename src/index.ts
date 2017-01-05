@@ -34,6 +34,9 @@ export function createElement(
     if (v === undefined || v === null) {
       continue;
     }
+    else if (k === "children" && isValidChild(v)) {
+      handleChild(elem, v as Child);
+    }
     else if (k === "ref" && typeof v === "function") {
       (v as Setter)(elem);
     }
@@ -83,4 +86,12 @@ function handleChild(
   else if (child instanceof Array) {
     child.forEach(c => handleChild(parent, c));
   }
+}
+
+function isValidChild(value: any): boolean {
+  if (value instanceof HTMLElement) return true;
+  if (value instanceof Array && isValidChild(value[0])) return true;
+  if (typeof value === "string") return true;
+  if (typeof value === "number") return true;
+  return false;
 }
