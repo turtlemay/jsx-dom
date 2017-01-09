@@ -13,7 +13,9 @@ import * as React from '@turtlemay/jsx-dom'
 class MyCustomElement extends HTMLElement {
   constructor() {
     super()
-    this.appendChild(<p>hello {MyCustomElement.name}</p>)
+    this.appendChild(
+      <p>hello {MyCustomElement.name}</p>
+    )
   }
 }
 
@@ -58,14 +60,19 @@ import * as React from '@turtlemay/jsx-dom'
 And write some JSX:
 
 ```javascript
-const attribs = { foo: 'foo', bar: 'bar' }
+const attribs = {
+  foo: 'foo',
+  bar: 'bar',
+}
 const div = <div {...attribs} baz="baz" qux="qux" />
 ```
 
 JSX elements become native DOM elements:
 
 ```javascript
-console.assert(<div /> instanceof HTMLDivElement)
+console.assert(
+  <div /> instanceof HTMLDivElement
+)
 ```
 
 ## Optional Configuration
@@ -93,7 +100,7 @@ Use a decorator for easy component registration:
 // Decorator with optional tag name to define custom elements.
 function registerComponent(tagName) {
   return type => {
-    if (!tagName) tagName = `x-${type.name.toLowerCase()}`
+    if (!tagName) tagName = 'x-' + type.name.toLowerCase()
     if (customElements.get(tagName)) return
     customElements.define(tagName, type)
   }
