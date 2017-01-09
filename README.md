@@ -7,13 +7,13 @@ This minimal, zero-dependency JSX factory allows you to use React-like design pa
 ## Example
 
 ```javascript
-import * as React from '@turtlemay/jsx-dom';
+import * as React from '@turtlemay/jsx-dom'
 
 // Define a custom element type.
 class MyCustomElement extends HTMLElement {
   constructor() {
-    super();
-    this.appendChild(<p>hello {MyCustomElement.name}</p>);
+    super()
+    this.appendChild(<p>hello {MyCustomElement.name}</p>)
   }
 }
 
@@ -30,7 +30,7 @@ document.body.appendChild(
     onClick={e => {}}
 
     // Style objects are also supported.
-    style={{ border: "1px solid red" }}
+    style={{ border: '1px solid red' }}
 
     // Anything else becomes a native attribute.
     my-string-attrib="foo"
@@ -52,20 +52,20 @@ npm install @turtlemay/jsx-dom
 Simply import the module into your JSX files using the `React` namespace:
 
 ```javascript
-import * as React from '@turtlemay/jsx-dom';
+import * as React from '@turtlemay/jsx-dom'
 ```
 
 And write some JSX:
 
 ```javascript
-const attribs = { foo: 'foo', bar: 'bar' };
-const div = <div {...attribs} baz="baz" qux="qux" />;
+const attribs = { foo: 'foo', bar: 'bar' }
+const div = <div {...attribs} baz="baz" qux="qux" />
 ```
 
 JSX elements become native DOM elements:
 
 ```javascript
-console.assert(<div /> instanceof HTMLDivElement);
+console.assert(<div /> instanceof HTMLDivElement)
 ```
 
 ## Optional Configuration
@@ -82,7 +82,7 @@ With TypeScript you can use a namespace other than `React` by setting your `tsco
 ```javascript
 import * as JSXFactory from '@turtlemay/jsx-dom';
 
-const div = <div />;
+const div = <div />
 ```
 
 ## Tips
@@ -93,10 +93,10 @@ Use a decorator for easy component registration:
 // Decorator with optional tag name to define custom elements.
 function registerComponent(tagName) {
   return type => {
-    if (!tagName) tagName = `x-${type.name.toLowerCase()}`;
-    if (customElements.get(tagName)) return;
-    customElements.define(tagName, type);
-  };
+    if (!tagName) tagName = `x-${type.name.toLowerCase()}`
+    if (customElements.get(tagName)) return
+    customElements.define(tagName, type)
+  }
 }
 
 // Decorate your components.
@@ -111,7 +111,7 @@ For passing non-serializable props, use an initializer:
 class MyComponent extends HTMLElement {
   init(myArg) {
     // Use your arguments to perform initialization.
-    return this;
+    return this
   }
 }
 
@@ -120,5 +120,5 @@ document.body.appendChild(
     <MyComponent my-serializable-prop="" />,
     { myNonSerializableProp: Symbol() }
   )
-);
+)
 ```

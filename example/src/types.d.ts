@@ -1,1 +1,1 @@
-declare const customElements: any;
+declare const customElements: any
