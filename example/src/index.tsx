@@ -1,25 +1,22 @@
 import * as React from '../..'
 
-@registerComponent()
-class MyCustomElement extends HTMLElement {
-  private _paragraphElem: HTMLParagraphElement
+import Component from './Component'
+
+@Component.register()
+class MyCustomElement extends Component {
+  private pElem: HTMLParagraphElement
 
   public connectedCallback() {
-    this._render()
+    this._render(
+      <p ref={v => this.pElem = v}>
+        hello {MyCustomElement.name}
+      </p>
+    )
     console.assert(this.className === 'test')
     console.assert(this.style.display === 'block')
     console.assert(this.getAttribute('test-string') === 'foo')
     console.assert(this.getAttribute('test-boolean') === null)
     console.assert(this.getAttribute('test-number') === '0')
-  }
-
-  private _render() {
-    this.innerHTML = ''
-    this.appendChild(
-      <p ref={(v: HTMLParagraphElement) => this._paragraphElem = v}>
-        hello {MyCustomElement.name}
-      </p>
-    )
   }
 }
 
@@ -49,11 +46,3 @@ document.body.appendChild(
 document.body.appendChild(
   <MyCustomElement {...testAttribs} />
 )
-
-export function registerComponent(tagName?: string) {
-  return <T extends HTMLElement>(type: new () => T) => {
-    if (!tagName) tagName = `x-${type.name.toLowerCase()}`
-    if (customElements.get(tagName)) return
-    customElements.define(tagName, type)
-  }
-}
