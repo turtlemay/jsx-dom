@@ -20,7 +20,7 @@ class MyCustomElement extends HTMLElement {
 }
 
 // Register our custom element.
-customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement);
+customElements.define(`x-${MyCustomElement.name.toLowerCase()}`, MyCustomElement)
 
 // Use the custom element type like a React component.
 document.body.appendChild(
@@ -40,7 +40,7 @@ document.body.appendChild(
     my-boolean-attrib={true}
     // Objects become json-stringified.
     my-object-attrib={{ foo: "bar" }} />
-);
+)
 ```
 
 ## Installation
@@ -87,7 +87,7 @@ With TypeScript you can use a namespace other than `React` by setting your `tsco
 ```
 
 ```javascript
-import * as JSXFactory from '@turtlemay/jsx-dom';
+import * as JSXFactory from '@turtlemay/jsx-dom'
 
 const div = <div />
 ```
