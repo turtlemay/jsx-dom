@@ -11,11 +11,9 @@ import * as React from '@turtlemay/jsx-dom'
 
 // Define a custom element type.
 class MyCustomElement extends HTMLElement {
-  constructor() {
-    super()
-    this.appendChild(
-      <p>hello {MyCustomElement.name}</p>
-    )
+  connectedCallback() {
+    this.innerHTML = ''
+    this.appendChild(<p>hello {App.name}</p>)
   }
 }
 
