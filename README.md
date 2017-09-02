@@ -13,7 +13,7 @@ import * as React from '@turtlemay/jsx-dom'
 class MyCustomElement extends HTMLElement {
   connectedCallback() {
     this.innerHTML = ''
-    this.appendChild(<p>hello {App.name}</p>)
+    this.appendChild(<p>hello {MyCustomElement.name}</p>)
   }
 }
 
