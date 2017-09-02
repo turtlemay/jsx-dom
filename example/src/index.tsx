@@ -4,11 +4,11 @@ import Component from './Component'
 
 @Component.register()
 class MyCustomElement extends Component {
-  private pElem: HTMLParagraphElement
+  private _pElem: HTMLParagraphElement
 
   public connectedCallback() {
     this._render(
-      <p ref={v => this.pElem = v}>
+      <p ref={v => this._pElem = v}>
         hello {MyCustomElement.name}
       </p>
     )
