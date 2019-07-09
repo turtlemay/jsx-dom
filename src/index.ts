@@ -14,7 +14,7 @@ export type Prop = string | number | boolean | Object | EventListener | Setter
 export function createElement(
   type: (new () => HTMLElement) | string,
   props: { [name: string]: Prop },
-  ...children: Child[], ): HTMLElement {
+  ...children: Child[] ): HTMLElement {
 
   let elem: HTMLElement
 
