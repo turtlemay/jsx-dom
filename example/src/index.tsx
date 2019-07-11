@@ -28,7 +28,7 @@ const testAttribs = {
   },
 
   onClick: (e: Event) => {
-    console.log(e.type, e.target)
+    console.log(e.type, e.currentTarget)
   },
 
   'test-string': 'foo',
