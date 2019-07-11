@@ -48,7 +48,7 @@ export function createElement(
     }
     else if (k.startsWith('on') && typeof v === 'function') {
       const propName = k.toLowerCase()
-      if (propName in elem) Object.assign(elem, { [propName]: v} )
+      if (propName in elem) Object.assign(elem, { [propName]: v })
       else throw new TypeError(`Event "${propName}" is not supported.`)
     }
     else if (typeof v === 'string') {
