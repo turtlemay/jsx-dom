@@ -4,6 +4,7 @@
     "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedLocals": false
   }
 }
