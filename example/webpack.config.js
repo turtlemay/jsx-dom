@@ -6,10 +6,7 @@ module.exports = {
     extensions: ['.js', '.ts', '.tsx'],
   },
 
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    './src/index',
-  ],
+  entry: './src/index',
 
   output: {
     filename: 'bundle.js',
@@ -27,6 +24,7 @@ module.exports = {
 
   plugins: [
     new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 
   devtool: 'inline-source-map',
@@ -34,5 +32,6 @@ module.exports = {
   devServer: {
     contentBase: __dirname,
     publicPath: '/out',
+    hot: true,
   },
 }
