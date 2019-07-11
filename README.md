@@ -26,8 +26,10 @@ document.body.appendChild(
     // Use the ref callback to save your element reference.
     ref={v => this._myElemRef = v}
 
-    // Event callbacks become native event listeners.
-    onClick={e => {}}
+    // Props matching a native property name will be assigned to that property.
+    onclick={e => {}}
+    // Camel cased event callbacks are also assigned via the corresponding native property.
+    onMouseDown={e => {}}
 
     // Style objects are also supported.
     style={{ border: '1px solid red' }}

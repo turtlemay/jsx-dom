@@ -43,6 +43,9 @@ export function createElement(
     else if (k === 'style' && typeof v === 'object') {
       Object.assign(elem.style, v)
     }
+    else if (k in elem) {
+      Object.assign(elem, { [k]: v} )
+    }
     else if (k.startsWith('on') && typeof v === 'function') {
       const propName = k.toLowerCase()
       if (propName in elem) Object.assign(elem, { [propName]: v} )
