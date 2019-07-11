@@ -44,8 +44,8 @@ export function createElement(
       Object.assign(elem.style, v)
     }
     else if (k.startsWith('on') && typeof v === 'function') {
-      const eventType = k.substr(2, k.length).toLowerCase()
-      elem.addEventListener(eventType, v as EventListener)
+      const propName = k.toLowerCase()
+      if (propName in elem) Object.assign(elem, { [propName]: v} )
     }
     else if (typeof v === 'string') {
       if (k === 'className') k = 'class'
