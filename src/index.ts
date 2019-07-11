@@ -67,7 +67,7 @@ export function createElement(
       elem.setAttribute(k, JSON.stringify(v))
     }
     else {
-      throw new TypeError(`Attribute type "${typeof v}" not supported.`)
+      throw new TypeError(`Type "${typeof v}" is not supported for attribute "${k}".`)
     }
   }
 
