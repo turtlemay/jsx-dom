@@ -127,7 +127,3 @@ document.body.appendChild(
   )
 )
 ```
-
-## Additional Notes
-
-Due to the way template elements are implemented, implicit event listener props (`onClick`, etc.) inside a template will be ignored. They must be assigned explicitly in your code as normal.
