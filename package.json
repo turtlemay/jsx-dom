@@ -29,7 +29,8 @@
   "typings": "out/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "start": "tsc -w"
+    "start": "tsc -w",
+    "prepublishOnly": "tsc"
   },
   "devDependencies": {
     "typescript": "^3.5.3"
