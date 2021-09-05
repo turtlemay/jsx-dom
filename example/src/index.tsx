@@ -46,3 +46,13 @@ document.body.appendChild(
 document.body.appendChild(
   <MyCustomElement {...testAttribs} />
 )
+
+const template = (
+  <template>
+    <div>
+      hello template
+    </div>
+  </template>
+) as HTMLTemplateElement
+
+document.body.appendChild(template.content)
