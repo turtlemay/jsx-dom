@@ -1,12 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server"
+    "build": "tsc"
   },
-  "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.7.2"
+  "dependencies": {
+    "@turtlemay/jsx-dom": ".."
   }
 }

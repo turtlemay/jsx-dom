@@ -1,6 +1,6 @@
-import * as React from '../..'
+import * as React from '../node_modules/@turtlemay/jsx-dom/out/index.js'
 
-import Component from './Component'
+import Component from './Component.js'
 
 @Component.register()
 class MyCustomElement extends Component {

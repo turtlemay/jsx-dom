@@ -1,8 +1,9 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "outDir": "out",
     "target": "es2015",
-    "module": "commonjs",
+    "module": "esnext",
     "jsx": "react",
     "noImplicitAny": false,
     "noUnusedLocals": false
