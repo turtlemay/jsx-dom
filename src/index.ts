@@ -12,8 +12,7 @@ export type Child = HTMLElement | string | number | any[]
 export type Prop = string | number | boolean | Object | EventListener | Setter
 
 const FRAGMENT_TYPE = Symbol()
-
-export const Fragment = FRAGMENT_TYPE
+export const Fragment: any = FRAGMENT_TYPE
 
 export function createElement(
   type: string | (new () => HTMLElement) | typeof FRAGMENT_TYPE,
