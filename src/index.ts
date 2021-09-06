@@ -41,8 +41,8 @@ export function createElement(
     if (v === undefined || v === null) {
       continue
     }
-    else if (k === 'children' && isValidChild(v)) {
-      handleChild(elem, v as Child)
+    else if (k === 'children') {
+      handleChild(elem, v)
     }
     else if (k === 'ref' && typeof v === 'function') {
       (v as Setter)(elem)
@@ -90,7 +90,7 @@ export function createElement(
 
 function handleChild(
   parent: HTMLElement | DocumentFragment,
-  child: Child ): void {
+  child: Child | unknown ): void {
 
   if (typeof child === 'string') {
     parent.appendChild(document.createTextNode(child))
@@ -107,13 +107,4 @@ function handleChild(
   else if (child instanceof Array) {
     child.forEach(c => handleChild(parent, c))
   }
-}
-
-function isValidChild(v: unknown): boolean {
-  if (v instanceof HTMLElement) return true
-  if (v instanceof DocumentFragment) return true
-  if (v instanceof Array && isValidChild(v[0])) return true
-  if (typeof v === 'string') return true
-  if (typeof v === 'number') return true
-  return false
 }
