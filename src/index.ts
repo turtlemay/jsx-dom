@@ -101,6 +101,9 @@ function handleChild(
   else if (child instanceof HTMLElement) {
     parent.appendChild(child)
   }
+  else if (child instanceof DocumentFragment) {
+    parent.appendChild(child)
+  }
   else if (child instanceof Array) {
     child.forEach(c => handleChild(parent, c))
   }
