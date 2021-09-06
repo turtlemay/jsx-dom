@@ -51,7 +51,7 @@ export function createElement(
       Object.assign(elem.style, v)
     }
     else if (k in elem) {
-      Object.assign(elem, { [k]: v } )
+      Object.assign(elem, { [k]: v })
     }
     else if (k.startsWith('on') && typeof v === 'function') {
       const propName = k.toLowerCase()
@@ -90,7 +90,7 @@ export function createElement(
 
 function handleChild(
   parent: HTMLElement | DocumentFragment,
-  child: Child, ): void {
+  child: Child ): void {
 
   if (typeof child === 'string') {
     parent.appendChild(document.createTextNode(child))
