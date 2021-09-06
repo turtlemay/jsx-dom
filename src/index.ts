@@ -111,6 +111,7 @@ function handleChild(
 
 function isValidChild(v: unknown): boolean {
   if (v instanceof HTMLElement) return true
+  if (v instanceof DocumentFragment) return true
   if (v instanceof Array && isValidChild(v[0])) return true
   if (typeof v === 'string') return true
   if (typeof v === 'number') return true
