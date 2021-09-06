@@ -74,3 +74,12 @@ const template = (
 ) as HTMLTemplateElement
 
 document.body.appendChild(template.content)
+
+console.assert(<></> instanceof DocumentFragment)
+
+document.body.appendChild(
+  <React.Fragment>
+    <div>hello fragment foo</div>
+    <div>hello fragment bar</div>
+  </React.Fragment>
+)

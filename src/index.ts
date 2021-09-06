@@ -1,6 +1,6 @@
 declare global {
   namespace JSX {
-    type Element = HTMLElement
+    type Element = HTMLElement | DocumentFragment
     type IntrinsicElements = { [name: string]: { [name: string]: any } }
   }
 }
@@ -11,14 +11,21 @@ export type Child = HTMLElement | string | number | any[]
 
 export type Prop = string | number | boolean | Object | EventListener | Setter
 
+const FRAGMENT_TYPE = Symbol()
+
+export const Fragment = FRAGMENT_TYPE
+
 export function createElement(
-  type: (new () => HTMLElement) | string,
+  type: string | (new () => HTMLElement) | typeof FRAGMENT_TYPE,
   props: { [name: string]: Prop },
-  ...children: Child[] ): HTMLElement {
+  ...children: Child[] ): HTMLElement | DocumentFragment {
 
   let elem: HTMLElement
 
-  if (typeof type === 'string') {
+  if (type === FRAGMENT_TYPE) {
+    elem = document.createElement('template')
+  }
+  else if (typeof type === 'string') {
     elem = document.createElement(type)
   }
   else if (typeof type === 'function') {
@@ -74,7 +81,11 @@ export function createElement(
   const parent = elem instanceof HTMLTemplateElement ? elem.content : elem
   children.forEach(child => handleChild(parent, child))
 
-  return elem
+  if (type === FRAGMENT_TYPE) {
+    return parent
+  } else {
+    return elem
+  }
 }
 
 function handleChild(

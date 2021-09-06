@@ -75,6 +75,14 @@ console.assert(
 )
 ```
 
+And fragments become document fragments:
+
+```javascript
+console.assert(
+  <></> instanceof DocumentFragment
+)
+```
+
 ## Optional Configuration
 
 With TypeScript you can use a namespace other than `React` by setting your `tsconfig.json`:

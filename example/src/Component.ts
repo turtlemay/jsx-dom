@@ -1,5 +1,5 @@
 abstract class Component extends HTMLElement {
-  protected _render(elem: HTMLElement) {
+  protected _render(elem: HTMLElement | DocumentFragment) {
     this.innerHTML = ''
     this.appendChild(elem)
   }
