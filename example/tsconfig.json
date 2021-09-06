@@ -2,6 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "out",
+    "sourceMap": true,
     "target": "es2015",
     "module": "esnext",
     "jsx": "react",
