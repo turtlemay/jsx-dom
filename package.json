@@ -1,6 +1,6 @@
 {
   "name": "@turtlemay/jsx-dom",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Turn your JSX elements into native DOM elements.",
   "author": {
     "name": "turtlemay",
