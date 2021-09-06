@@ -29,7 +29,8 @@ export function createElement(
     elem = document.createElement(type)
   }
   else if (typeof type === 'function') {
-    elem = new type()
+    const ElemConstructor = type as new () => HTMLElement
+    elem = new ElemConstructor()
   }
   else {
     throw new TypeError()
