@@ -106,10 +106,10 @@ function handleChild(
   }
 }
 
-function isValidChild(value: any): boolean {
-  if (value instanceof HTMLElement) return true
-  if (value instanceof Array && isValidChild(value[0])) return true
-  if (typeof value === 'string') return true
-  if (typeof value === 'number') return true
+function isValidChild(v: unknown): boolean {
+  if (v instanceof HTMLElement) return true
+  if (v instanceof Array && isValidChild(v[0])) return true
+  if (typeof v === 'string') return true
+  if (typeof v === 'number') return true
   return false
 }
